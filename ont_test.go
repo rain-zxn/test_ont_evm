@@ -16,7 +16,7 @@ import (
 	ontcommon "github.com/ontio/ontology/common"
 	"github.com/ontio/ontology/merkle"
 	ontocccom "github.com/ontio/ontology/smartcontract/service/native/cross_chain/common"
-	ontSDK1Client "github.com/onto/ontogo-sdk/client"
+	ontSDK1Client "github.com/rain-zxn/ontology-go-sdk/client"
 	ontnode "github.com/polynetwork/bridge-common/chains/ont"
 	polynode "github.com/polynetwork/bridge-common/chains/poly"
 	pcom "github.com/polynetwork/poly/common"
