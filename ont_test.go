@@ -188,11 +188,9 @@ type MakeTxParamWithSender struct {
 }
 
 var (
-	boolTy, _  = abi.NewType("bool", "", nil)
 	addrTy, _  = abi.NewType("address", "", nil)
 	bytesTy, _ = abi.NewType("bytes", "", nil)
 	arguments  = abi.Arguments{
-		{Type: boolTy, Name: "LeafFlag"},
 		{Type: addrTy, Name: "Sender"},
 		{Type: bytesTy, Name: "Value"},
 	}
@@ -201,7 +199,7 @@ var (
 func (this *MakeTxParamWithSender) Serialization() (data []byte, err error) {
 	sink := ontcommon.NewZeroCopySink(nil)
 	this.MakeTxParam.Serialization(sink)
-	data, err = arguments.Pack(false, this.Sender, sink.Bytes())
+	data, err = arguments.Pack(this.Sender, sink.Bytes())
 	return
 }
 
