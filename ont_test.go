@@ -198,8 +198,9 @@ var (
 
 func (this *MakeTxParamWithSender) Serialization() (data []byte, err error) {
 	sink := ontcommon.NewZeroCopySink(nil)
+	sink.WriteAddress(ontcommon.Address(this.Sender))
 	this.MakeTxParam.Serialization(sink)
-	data, err = arguments.Pack(this.Sender, sink.Bytes())
+	data = sink.Bytes()
 	return
 }
 
@@ -254,7 +255,6 @@ func Compose(tx *msg.Tx) (err error) {
 	hashesx:=make([]ontcommon.Uint256,0)
 	for k,v:=range hashes.Hashes{
 		fmt.Println("hashes.Hashes[",k,"] : ",v)
-		v:=HexStringReverse1(v)
 		uint256v,_:=ontcommon.Uint256FromHexString(v)
 		hashesx=append(hashesx,uint256v)
 	}
